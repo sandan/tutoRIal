@@ -5,6 +5,7 @@
 # This lends a thing to be internally stored as a list
 # (i.e mode(thing)) -> list
 
+#' @export
 create_thing<-function(things=NULL){
 
   t<-list(things)
