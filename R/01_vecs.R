@@ -41,4 +41,3 @@ print(c(is.atomic(x2), is.list(x1)))
 k1 <- list(abc="123")
 print( c(is.vector(k1), names(k1)) )
 print(is.vector(x2))
-
