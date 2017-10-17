@@ -153,3 +153,11 @@ is.factor(z$value)
 is.double(z$value)
 is.integer(z$value)
 z$value
+
+# modifying the levels of a factor modifies the underlying factor
+f1 <- factor(letters)
+f1
+levels(f1) <- rev(levels(f1))  # reverse levels of factor
+is.factor(f1)   # still a factor
+levels(f1)
+f1
