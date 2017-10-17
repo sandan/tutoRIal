@@ -81,3 +81,19 @@ str(x)
 #  c(..., 'scalars', ...)              -> atomic vector of most flexible type
 
 # a list can be turned into an atomic vector by calling unlist()
+x <- unlist(list(1, 2, 3))
+is.list(x)
+is.atomic(x)
+length(x)
+str(x)
+
+# a list with elements of a different type has the same coercion rules as c()
+x <- unlist(list(FALSE, 1L, 2))
+is.double(x)
+is.atomic(x)
+str(x)
+
+# Comparisons between 'scalars' follow rules of atomic vectors
+1 == "1"   # 1 is coerced to "1"
+-1 < FALSE # FALSE coerced to 0
+"one" < 2  # 2 coerced to "2"

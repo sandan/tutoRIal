@@ -14,3 +14,4 @@ R stuff
 - [Git and RStudio](https://support.rstudio.com/hc/en-us/articles/200532077?version=1.1.383&mode=desktop)
   - File->New Project->Create from version control
   - Gave the github url of the repo
+  - More on github in RStudio: http://r-pkgs.had.co.nz/git.html#git-init
