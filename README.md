@@ -15,3 +15,5 @@ R stuff
   - File->New Project->Create from version control
   - Gave the github url of the repo
   - More on github in RStudio: http://r-pkgs.had.co.nz/git.html#git-init
+  
+- [Navigating Code](https://support.rstudio.com/hc/en-us/articles/200710523-Navigating-Code)
