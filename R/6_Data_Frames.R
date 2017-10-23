@@ -183,3 +183,11 @@ x[1]
 x
 
 ncol(array(1:10, c(5, 2)))
+
+# casting a data frame to a matrix will coerce the values
+# of the df before making it a matrix
+as.matrix(data.frame(x = 1:4, c('a', 'b', 'c', 'd')))
+
+# default data frame has no rows/cols
+data.frame()
+attributes(data.frame()) # class, row.names, names

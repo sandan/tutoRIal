@@ -97,3 +97,14 @@ str(x)
 1 == "1"   # 1 is coerced to "1"
 -1 < FALSE # FALSE coerced to 0
 "one" < 2  # 2 coerced to "2"
+
+# the contents of a list can be made multi-dimensional
+# just modify their dim attribute
+x <- list(a = c(1, 2), b = c(3L, 4L), c = c('a', 'b'), d = T)
+dim(x) <- c(2, 2)
+str(x)
+ncol(x)
+nrow(x)
+rownames(x)
+colnames(x)
+dim(x)
