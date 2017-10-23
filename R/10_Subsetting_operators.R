@@ -35,4 +35,23 @@ mtcars[["cyl"]]  # vec of doubles
 # The key difference is usually how you select between
 # simplifying or preserving behaviours, and what the default is.
 
-#
+# Simplifying vs. Preserving
+# When you subset a data structure the returned data structure is
+# either the same as the data structure (preserving)
+# or another simple data structure that reps the output (simplifying)
+
+# Omitting drop = FALSE when subsetting matrices and data frames is a common error
+# It will work for your test cases but then someone
+
+#             Simplifying       Preserving
+# Vector        x[[1]]            x[1]
+# List          x[[1]]            x[1]
+# Factor        x[1:4, drop = T]  x[1:4]
+# Array         x[1, ] or x[, 1]  x[1, , drop = F] or x[, 1, drop = F]
+# Data frame    x[, 1] or x[[1]]  x[, 1, drop = F] or x[1]
+
+x <- factor(x = c("m", "f", "m"), levels = c("m", "f"))
+x[1:3]
+x[1:3, drop = FALSE]
+
+# Preserving is the same for all data types: you get the same type of output as input
