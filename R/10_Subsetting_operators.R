@@ -1,6 +1,6 @@
 # [[  and $
 
-# [[ is similar to [ except it can only return a single value and it allows you to pull elements from a list
+# [[ is similar to [ except it can only return a single value and it allows you to pull elements from a list (non-preserving)
 # $ is a useful shorthand for [[ with character subsetting
 
 x <- list(1, 2, 3)
@@ -41,17 +41,47 @@ mtcars[["cyl"]]  # vec of doubles
 # or another simple data structure that reps the output (simplifying)
 
 # Omitting drop = FALSE when subsetting matrices and data frames is a common error
-# It will work for your test cases but then someone
+# Someone will have a single column df
 
 #             Simplifying       Preserving
 # Vector        x[[1]]            x[1]
 # List          x[[1]]            x[1]
 # Factor        x[1:4, drop = T]  x[1:4]
-# Array         x[1, ] or x[, 1]  x[1, , drop = F] or x[, 1, drop = F]
+# Matrix/Array         x[1, ] or x[, 1]  x[1, , drop = F] or x[, 1, drop = F]
 # Data frame    x[, 1] or x[[1]]  x[, 1, drop = F] or x[1]
 
 x <- factor(x = c("m", "f", "m"), levels = c("m", "f"))
-x[1:3]
-x[1:3, drop = FALSE]
+x[1:2]
+x[c(1, 3), drop = TRUE]
+
+df <- data.frame(x = c(1, 2, 3))
+df[[1]]  # integer vec
+df[ , 1] # integer vec
+
+df[, 1, drop = F]  # df
+df[1]  # df
 
 # Preserving is the same for all data types: you get the same type of output as input
+# Simplifying differs for certain data types
+
+# atomic vector simplification -> returns non-named atomic vec
+x <- c(a = 1, b = 2)
+x[1]   # returns a named vec with a = 1
+x[[1]] # returns a non-named vec with 1
+
+# list simplification  -> returns non-named atomic vec
+y <- list(a = 1, b = 1)
+str(y[1])  # named list with a = 1
+y[[1]]     # non-named atomic vec with 1
+
+# factor simplification  -> returns factor
+z <- factor(c('a', 'b'))
+z[1]   # factor with 'a' and levels 'a' and 'b'
+z[[1]] # same as above
+
+z[1, drop = TRUE] # factor with first element 'a' and only level 'a'
+                  # drop = T will drop any levels that are not in the subset of the factor
+
+# Matrix or Array ->
+a <- matrix (1:4, nrow = 2)
+a[1, , drop = F]
