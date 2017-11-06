@@ -19,7 +19,7 @@
  # duplicated indices yield duplicated values
  x[c(1, 1, 2)]
 
- # indexing with doubles silently truncate to reals
+ # indexing with doubles silently truncate to ints
  x[(c(1.2, 1.5, 2, 2.5))]
 
  # negative integers omit the elements at the specified positions
